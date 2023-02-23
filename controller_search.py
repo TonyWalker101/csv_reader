@@ -33,7 +33,7 @@ else:
     csv_data = csv.DictReader(raw_csv_data)
 
     for row in csv_data:
-      if not results.get(row["Controller"], False):
+      if row["Controller"] not in results:
         results[row["Controller"]] = []
         results[row["Controller"]].append(row["Process"])
       else:
