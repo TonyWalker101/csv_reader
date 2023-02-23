@@ -1,5 +1,4 @@
 #program will read and display the "Controllers" column from the csv file
-
 import csv
 import sys
 
@@ -16,7 +15,6 @@ if not search == "All":
   with open("csv_test.csv") as csv_test:
     data = csv.DictReader(csv_test)
 
-
     for row in data:
       if row["Controller"].lower().title().find(search) != -1:
         name = row["Controller"]
@@ -24,6 +22,7 @@ if not search == "All":
         # break
     
     results[name] = processes_list
+    results["Total Processes"] = len(processes_list)
 
     if results[name]:
       print(results)
