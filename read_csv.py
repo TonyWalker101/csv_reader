@@ -3,20 +3,20 @@
 import csv
 import sys
 
-results = []
+results = False
 
 if len(sys.argv) >= 2:
   search = sys.argv[1]
 else:
   search = input("Which process are you looking for?\n")
 
-with open("csv_test.csv") as csv_test:
-  data = csv.DictReader(csv_test)
+with open("csv_test.csv") as raw_csv_data:
+  csv_data = csv.DictReader(raw_csv_data)
 
-  for row in data:
+  for row in csv_data:
     if row["Process"].find(search.upper()) != -1:
-      print({row["Process"]: {"Controller": row["Controller"], "Email": row["Email"]}})
-      results.append({row["Process"]: {"Controller": row["Controller"], "Email": row["Email"]}})
+      print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
+      results = True
       # break
 
   if not results:
