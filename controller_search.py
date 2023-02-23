@@ -12,10 +12,10 @@ else:
   search = input("Which controller are you looking for?\n").lower().title()
 
 if not search == "All":
-  with open("csv_test.csv") as csv_test:
-    data = csv.DictReader(csv_test)
+  with open("csv_test.csv") as raw_csv_data:
+    csv_data = csv.DictReader(raw_csv_data)
 
-    for row in data:
+    for row in csv_data:
       if row["Controller"].lower().title().find(search) != -1:
         name = row["Controller"]
         processes_list.append(row["Process"])
@@ -29,18 +29,18 @@ if not search == "All":
     else:
       print(f"No processes found for {search}")
 else:
-  with open("csv_test.csv") as csv_test:
-    data = csv.DictReader(csv_test)
+  with open("csv_test.csv") as raw_csv_data:
+    csv_data = csv.DictReader(raw_csv_data)
 
-    for row in data:
+    for row in csv_data:
       if not results.get(row["Controller"], False):
         results[row["Controller"]] = []
         results[row["Controller"]].append(row["Process"])
       else:
        results[row["Controller"]].append(row["Process"])
     
-    for controller in results.items():
-      print(controller)
+    for controller, processes in results.items():
+      print(f"{controller} (Total={len(processes)}): {processes}")
 
 # print(results)
 # [print(dir(search))]
