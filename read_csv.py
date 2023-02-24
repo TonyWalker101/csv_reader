@@ -1,9 +1,8 @@
 #program will read and display the info associated with the "Process" selected
-
 import csv
 import sys
 
-
+#receives search parameters either through arguments on file call or input
 if len(sys.argv) >= 2:
   search = sys.argv[1:]
 else:
@@ -19,11 +18,8 @@ def csv_search(search):
         if item.upper() in row["Process"]:
           print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
           results = True
-          # break
 
       if not results:
         print(f"No results found for {item}")
 
 csv_search(search)
-# print(results)
-# [print(dir(search))]
