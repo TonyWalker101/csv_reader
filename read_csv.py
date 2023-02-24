@@ -9,13 +9,12 @@ if len(sys.argv) >= 2:
 else:
   search = input("Which process are you looking for?\n").split(" ")
 
-def csv_search(*search):
+def csv_search(search):
   with open("csv_test.csv") as raw_csv_data:
     csv_data = csv.DictReader(raw_csv_data)
-    print("*search=",search)
+
     for item in search:
       results = False
-
       for row in csv_data:
         if item.upper() in row["Process"]:
           print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
@@ -25,6 +24,6 @@ def csv_search(*search):
       if not results:
         print(f"No results found for {item}")
 
-csv_search(*search)
+csv_search(search)
 # print(results)
 # [print(dir(search))]
