@@ -18,6 +18,7 @@ def csv_search(search):
     with open("csv_test.csv") as raw_csv_data:
       csv_data = csv.DictReader(raw_csv_data)
       
+      #loop instead of .get() as .csv may have variations of the search item (ex: 100A, 100B for search item = 100)
       for row in csv_data:
         if item.upper() in row["Process"]:
           print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
