@@ -9,6 +9,9 @@ if len(sys.argv) >= 2:
 else:
   search = input("Which process are you looking for?\n").split(" ")
 
+def process_search(item):
+  pass
+
 def csv_search(search):
 
   #for each item in search; open csv, find results, & print results
