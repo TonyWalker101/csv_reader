@@ -9,8 +9,11 @@ if len(sys.argv) >= 2:
 else:
   search = input("Which process are you looking for?\n").split(" ")
 
-def process_search(item):
-  pass
+def process_search(item, row):
+  if item.upper() in row["Process"]:
+    print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
+    return True
+  return False
 
 def csv_search(search):
 
@@ -23,12 +26,13 @@ def csv_search(search):
       
       #loop instead of .get() as .csv may have variations of the search item (ex: 100A, 100B for search item = 100)
       for row in csv_data:
-        if item.upper() in row["Process"]:
-          print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
+        if process_search(item, row):
           results = True
 
     if not results:
       print(f"No results found for {item}")
+  
+  return
 
 #runs main function
 csv_search(search)
