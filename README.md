@@ -24,5 +24,27 @@ Results, or lack of results, will be printed to the console:
 {'NGO101': {'Controller': 'Tony', 'Backup': 'Bob', 'ENV': '6.5.1'}}
 No results found for 200
 ```
+## How to use controller_search.py
+
+Run the program with 1 CLI argument:
+
+```
+  python3 controller_search.py tony
+```
+
+...or without, in which case you'll be prompted to provide the process(es) to search for:
+
+```
+  python3 controller_search.py 
+  Which controller are you looking for?
+  NGO101 NGO200
+```
+
+Results, or lack of results, will be printed to the console:
+
+```
+{'NGO101': {'Controller': 'Tony', 'Backup': 'Bob', 'ENV': '6.5.1'}}
+No results found for 200
+```
 
 
