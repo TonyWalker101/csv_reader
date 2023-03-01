@@ -7,13 +7,13 @@ Purpose built program to read from a specific csv file and return either the num
 Run the program with CLI argument(s):
 
 ```
-  py read_csv.py NGO101 NGO200
+  python3 read_csv.py NGO101 NGO200
 ```
 
 ...or without, in which case you'll be prompted to provide the process(es) to search for:
 
 ```
-  py read_csv.py 
+  python3 read_csv.py 
   Which process are you looking for?
   NGO101 NGO200
 ```
