@@ -17,11 +17,11 @@ def process_search(item, row, answer):
   return False
 
 def csv_search(search):
-  # answer = ""
+  results = ""
 
   #for each item in search; open csv, find results, & print results
   for item in search:
-    results = False
+    found = False
     
     with open("csv_test.csv") as raw_csv_data:
       csv_data = csv.DictReader(raw_csv_data)
@@ -29,14 +29,13 @@ def csv_search(search):
       #loop instead of .get() as .csv may have variations of the search item (ex: 100A, 100B for search item = 100)
       for row in csv_data:
         if item.upper() in row["Process"]:
-          print({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}})
-          results = True
+          results += str({row["Process"]: {"Controller": row["Controller"], "Backup": row["Backup"], "ENV": row["ENV"]}}) + "\n"
+          found = True
 
-    if not results:
-      print(f"No results found for {item}")
-      # answer += f"No results found for {search}" + "\n"
+    if not found:
+      results += f"No results found for {item}" + "\n"
   
-  return f"No results found for {item}"
+  return results.strip()
 
 #runs main function
-csv_search(search)
+print(csv_search(search))
